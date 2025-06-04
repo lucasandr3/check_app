@@ -1,0 +1,24 @@
+<app-toolbar [title]="'Checklist'" [showBackButton]="true"></app-toolbar>
+
+
+<ion-content>
+  <div class="content">
+    <ion-card *ngFor="let menu of menus" mode="ios">
+      <div class="d-flex align-items" (click)="navigateTo(menu)">
+        <div class="p-i-20">
+          <ion-icon name="{{menu.icon}}" size="large" color="contrast"/>
+        </div>
+        <div>
+          <ion-card-header>
+            <ion-card-title style="font-size: 1.2rem">
+              {{menu.titulo}}
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{menu.descricao}}
+          </ion-card-content>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,51 @@
+.ion-button {
+  margin: 0;
+  --padding-top: 20px !important;
+  --padding-bottom: 20px !important;
+  --border-radius: 0 !important;
+}
+
+.button-native {
+  border-radius: 0 !important;
+}
+
+.div-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  background-color: #f3f3f3;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.info-card {
+  padding: 16px;
+  margin-top: 0;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 45%;
+}
+
+.info-item label {
+  font-weight: bold;
+  color: var(--ion-text-color);
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+.info-item p {
+  font-size: 16px;
+  margin: 0;
+  color: var(--ion-text-color);
+}

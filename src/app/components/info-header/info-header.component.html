@@ -1,0 +1,23 @@
+<ion-card class="info-card" mode="ios">
+  <div class="info-row">
+    <div class="info-item">
+      <label>{{ label1l }}</label>
+      <p>{{ value1l }}</p>
+      <label>{{ label2l }}</label>
+      <p>{{ value2l }}</p>
+    </div>
+    <div class="info-item">
+      <label>{{label1r}}</label>
+      <p>{{value1r}}</p>
+      <label>{{label2r}}</label>
+      <p>{{value2r}}</p>
+    </div>
+    <div class="info-item" *ngIf="label1c || value1c || label2c || value2c">
+      <label>{{label1c}}</label>
+      <p>{{value1c}}</p>
+      <label>{{label2c}}</label>
+      <p>{{value2c}}</p>
+    </div>
+  </div>
+</ion-card>
+

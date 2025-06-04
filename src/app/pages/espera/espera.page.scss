@@ -1,0 +1,42 @@
+.ion-button {
+  margin: 0;
+  --padding-top: 20px !important;
+  --padding-bottom: 20px !important;
+  --border-radius: 0 !important;
+}
+
+.button-native {
+  border-radius: 0 !important;
+}
+
+.div-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  background-color: #f3f3f3;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.titulo-menu {
+  text-align: center;
+}
+
+.timer-card {
+  margin: 0 auto;
+
+  .time-display {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+    font-family: monospace;
+    text-align: center;
+  }
+}
+
+.registro-lista {
+  margin-top: 20px;
+  text-align: left;
+}

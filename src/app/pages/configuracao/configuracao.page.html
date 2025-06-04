@@ -1,0 +1,21 @@
+<app-toolbar [title]="'Configuração'" [showBackButton]="true"></app-toolbar>
+
+<ion-content>
+  <ion-list-header mode="ios">Aparência</ion-list-header>
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-toggle [(ngModel)]="paletteToggle" (ionChange)="toggleChange($event)" justify="space-between"
+      >Modo Escuro</ion-toggle
+      >
+    </ion-item>
+    <ion-item>
+      <ion-toggle
+        [(ngModel)]="highContrastPaletteToggle"
+        (ionChange)="highContrastPaletteToggleChange($event)"
+        justify="space-between"
+      >Modo de Alto Contraste</ion-toggle
+      >
+    </ion-item>
+  </ion-list>
+
+</ion-content>

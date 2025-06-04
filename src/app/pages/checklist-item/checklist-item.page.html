@@ -1,0 +1,47 @@
+<app-toolbar [title]="'Checklist'" [showBackButton]="true"></app-toolbar>
+
+
+<ion-tabs>
+  <ion-loading isOpen="{{isLoading}}" message="Processando..."></ion-loading>
+  <ion-tab>
+    <ion-progress-bar [value]="(currentStep + 1) / checklist.respostas.length" color="success"></ion-progress-bar>
+    <ion-content class="ion-padding">
+      <div *ngFor="let item of checklist.respostas[currentStep].items; let i = index" class="ion-margin-bottom">
+        <p class="ion-text-wrap mb-2">
+          <strong>{{ item.label }}</strong>
+        </p>
+
+
+          <div class="d-flex ion-justify-content-between">
+            <div class="d-flex gap-2">
+              <p *ngIf="item.status === 'sim'">Conforme</p>
+              <p *ngIf="item.status === 'nao'">Não Conforme</p>
+              <p *ngIf="item.status === 'na'">Não se aplica</p>
+            </div>
+          </div>
+
+
+        <div *ngIf="item.problema" class="ion-padding-start mt-4">
+          <ion-note color="danger">Justificativa: {{ item.problema }}</ion-note>
+        </div>
+
+        <ion-item-divider></ion-item-divider>
+      </div>
+
+
+    </ion-content>
+
+  </ion-tab>
+
+  <ion-tab-bar slot="bottom" color="dark">
+    <ion-tab-button (click)="anterior()" [disabled]="currentStep === 0">
+      <ion-icon name="chevron-back"></ion-icon>
+      Anterior
+    </ion-tab-button>
+    <ion-tab-button (click)="proximo()">
+      <ion-icon name="chevron-forward"></ion-icon>
+      Próximo
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+

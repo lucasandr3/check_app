@@ -1,0 +1,21 @@
+ion-tab {
+  margin-top: 70px !important;
+}
+
+ion-tab-bar {
+  padding: 5px !important;
+}
+
+.full-textarea {
+  height: calc(100vh - 150px); // Ajuste conforme a altura do header + botão
+  width: 100%;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+}
+
+
+ion-item-divider {
+  min-height: 16px !important;
+}

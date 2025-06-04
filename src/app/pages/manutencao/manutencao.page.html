@@ -1,0 +1,24 @@
+<app-toolbar [title]="'Manutenção'" [showBackButton]="true"></app-toolbar>
+
+<ion-content>
+  <app-info-header label1l="Frota" value1l="20203"></app-info-header>
+  <ion-list-header mode="ios">Equipamento</ion-list-header>
+  <div class="content">
+    <ion-list [inset]="false" class="mb-4" lines="none">
+      <ion-item>
+        <ion-checkbox labelPlacement="end" (ionChange)="cavaloChange($event)">Cavalo</ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox labelPlacement="end" (ionChange)="carretaChange($event)">Carreta</ion-checkbox>
+      </ion-item>
+    </ion-list>
+
+    <ion-textarea (ionChange)="descricaoChange($event)" label="Descreva o problema" labelPlacement="floating" fill="outline" placeholder="Descreva o problema" rows="10"></ion-textarea>
+  </div>
+</ion-content>
+
+<ion-button (click)="salvarManutencao()" expand="block" size="large" color="dark" class="no-mb">
+  <ion-icon slot="start" name="checkmark"></ion-icon>
+  Salvar
+</ion-button>
+

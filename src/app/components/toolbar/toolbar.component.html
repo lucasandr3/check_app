@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title>
+      <div class="d-flex align-items gap-2">
+        <ion-icon name="checkmark-done-outline" size="large" *ngIf="!showBackButton"/>
+        {{ title }}
+      </div>
+    </ion-title>
+    <ion-buttons slot="end" *ngIf="showMessage || showNotification || showBackButton">
+      <ion-button *ngIf="showNotification">
+        <ion-icon name="notifications" size="large"/>
+      </ion-button>
+      <ion-button *ngIf="showMessage">
+        <ion-icon name="chatbox" size="large"/>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="start" *ngIf="showMessage || showNotification || showBackButton">
+      <ion-back-button slot="start" default-href="/home" *ngIf="showBackButton"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" *ngIf="isSyncing">
+      <ion-button>
+        <ion-icon class="sync-pulse" name="cloud-upload" size="large"/>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="step != ''" slot="end" size="small">{{step}}</ion-title>
+  </ion-toolbar>
+</ion-header>

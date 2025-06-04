@@ -1,0 +1,14 @@
+<app-toolbar [title]="'Checklists'" [showBackButton]="true"></app-toolbar>
+
+
+
+<ion-content>
+    <ion-list>
+      <ion-item button detail="true" *ngFor="let checklist of checklists; let i = index" (click)="navigateTo(checklist)">
+        <ion-label>
+          <h3>{{checklist.frota}}</h3>
+          <p>{{checklist.criado_em | date:'fullDate' }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+</ion-content>

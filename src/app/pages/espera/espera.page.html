@@ -1,0 +1,45 @@
+<app-toolbar [title]="'Espera'" [showBackButton]="true"></app-toolbar>
+
+<ion-content>
+  <app-info-header label1l="Frota" value1l="20203" label1r="Rota" value1r="BRF Alimentos"></app-info-header>
+  <div class="content">
+    <h2 class="titulo-menu"><strong>Cronômetro</strong></h2>
+    <div class="timer-card">
+      <h1 class="time-display">{{ formattedTime }}</h1>
+    </div>
+
+    <div *ngIf="registros.length > 0" class="registro-lista">
+      <ion-list-header mode="ios" class="mb-2">Registros</ion-list-header>
+      <ion-list>
+        <ion-item *ngFor="let reg of registros; let i = index">
+          <ion-label>
+            Início: {{ reg.inicio }} | Fim: {{ reg.fim }}
+          </ion-label>
+          <ion-button fill="clear" color="danger" slot="end" (click)="excluirRegistro(i)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div style="text-align: center;" *ngIf="registros.length == 0">
+     <ion-text>Nenhum registro encontrado</ion-text>
+    </div>
+  </div>
+
+</ion-content>
+
+<div class="d-flex">
+  <ion-button class="w-full no-mb" color="medium" expand="full" (click)="startTimer()" [disabled]="isRunning || !startDateTime">
+    <ion-icon name="play" size="large" />
+  </ion-button>
+
+  <ion-button class="w-full no-mb" expand="full" color="medium" (click)="pauseTimer()">
+    <ion-icon name="pause" size="large" />
+  </ion-button>
+
+  <ion-button class="w-full no-mb" color="success" expand="full" [strong]="true" (click)="salvarRegistro()">
+    <ion-icon name="checkmark" size="large" color="light"/>
+    <ion-text color="light">Salvar</ion-text>
+  </ion-button>
+</div>

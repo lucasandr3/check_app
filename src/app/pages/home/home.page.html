@@ -1,0 +1,21 @@
+<app-toolbar [isSyncing]="syncing"></app-toolbar>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let menu of menus" [routerLink]="menu.route" detail="false">
+      <div class="margin-icon">
+        <ion-icon name="{{menu.icon}}" size="large" color="contrast"/>
+      </div>
+      <div>
+        <ion-label class="ion-text-wrap">
+          <h2 class="titulo-menu" [style]="!menu.descricao ? {'padding': '15px'} : ''"><strong>{{menu.titulo}}</strong></h2>
+          <h2>
+          <span *ngIf="menu.descricao">
+            <ion-note>{{menu.descricao}}</ion-note>
+          </span>
+          </h2>
+        </ion-label>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

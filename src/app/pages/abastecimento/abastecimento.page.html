@@ -1,0 +1,55 @@
+<app-toolbar [title]="'Abastecimento'" [showBackButton]="true"></app-toolbar>
+
+<ion-content>
+
+  <ion-loading isOpen="{{isLoading}}" message="Processando..."></ion-loading>
+
+  <app-info-header
+    label1l="Total Abastecido"
+    value1l="{{total}} Litro(s)"
+    [value2l]="totalArla + ' Litro(s) (Arla)'"
+    label1r="Subtotais"
+    value1r="{{valorTotal | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}"
+    value2r="{{valorTotalArla | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}"
+    label1c="Total"
+    value1c="{{totalAbastecido | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}"
+    >
+  </app-info-header>
+  <div class="content">
+
+    <h6 class="mt-0 mb-4">Valores</h6>
+
+    <div class="d-flex gap-2">
+
+      <div>
+        <ion-input label="Preço Combustível" label-placement="floating" inputmode="numeric" type="text" [(ngModel)]="preco" fill="outline" placeholder="Informe o preço do combustível"></ion-input>
+      </div>
+
+      <div>
+        <ion-input label="Preço Arla" label-placement="floating" type="number" inputmode="numeric" [(ngModel)]="precoArla" fill="outline" placeholder="Informe o preço do arla"></ion-input>
+      </div>
+    </div>
+
+    <h6 class="mb-4">Quantidades abastecidas</h6>
+
+    <div class="d-flex gap-2">
+      <div class="mb-4">
+        <ion-input label="Tanque 01" label-placement="floating" type="number" inputmode="numeric" [(ngModel)]="tanqueUm" (ionInput)="setTanqueUm($event)" [disabled]="!preco" fill="outline" placeholder="Informa a quantidade abastecida"></ion-input>
+      </div>
+
+      <div class="mb-4">
+        <ion-input label="Tanque 02" label-placement="floating" type="number" inputmode="numeric" [(ngModel)]="tanqueDois" (ionInput)="setTanqueDois($event)" [disabled]="!preco" fill="outline" placeholder="Informa a quantidade abastecida"></ion-input>
+      </div>
+    </div>
+
+    <div>
+      <ion-input label="Tanque Arla" label-placement="floating" type="number" inputmode="numeric" [(ngModel)]="tanqueArla" (ionInput)="setTanqueArla($event)" [disabled]="!precoArla" fill="outline" placeholder="Informa a quantidade abastecida"></ion-input>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-button (click)="salvarAbastecimento()" expand="block" size="large" color="dark" class="no-mb">
+  <ion-icon slot="start" name="checkmark-outline"></ion-icon>
+  Salvar Abastecimento
+</ion-button>

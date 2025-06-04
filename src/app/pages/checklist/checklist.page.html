@@ -1,0 +1,83 @@
+<app-toolbar [title]="'Checklist'" [showBackButton]="true" step="{{steps[currentStep].title}}"></app-toolbar>
+
+<ion-tabs>
+  <ion-loading isOpen="{{isLoading}}" message="Processando..."></ion-loading>
+  <ion-tab>
+    <ion-progress-bar [value]="(currentStep + 1) / steps.length" color="success"></ion-progress-bar>
+    <ion-content class="ion-padding">
+      <div *ngFor="let item of steps[currentStep].items; let i = index" class="ion-margin-bottom">
+        <p class="ion-text-wrap mb-2">
+          <strong>{{ item.label }}</strong>
+        </p>
+
+        <ion-radio-group [(ngModel)]="item.status" (ionChange)="onStatusChange(item)">
+          <div class="d-flex ion-justify-content-between mt-4">
+            <div class="d-flex gap-2">
+              <ion-radio slot="start" value="sim" color="success"></ion-radio>
+              <ion-label>Sim</ion-label>
+            </div>
+            <div class="d-flex gap-2">
+              <ion-radio slot="start" value="nao" color="danger"></ion-radio>
+              <ion-label>Não</ion-label>
+            </div>
+            <div class="d-flex gap-2">
+              <ion-radio slot="start" value="na" color="dark"></ion-radio>
+              <ion-label>N/A</ion-label>
+            </div>
+          </div>
+        </ion-radio-group>
+
+        <div *ngIf="item.problema" class="ion-padding-start mt-4">
+          <ion-note color="danger">Justificativa: {{ item.problema }}</ion-note>
+        </div>
+
+        <ion-item-divider></ion-item-divider>
+      </div>
+
+
+      <ion-modal [isOpen]="showModal" (didDismiss)="closeModal()">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar color="dark">
+              <ion-title>Descreva o problema</ion-title>
+              <ion-buttons slot="end">
+                <ion-button *ngIf="modalProblema != ''" (click)="saveProblema()">Salvar</ion-button>
+                <ion-button *ngIf="modalProblema == ''" (click)="saveProblema()">Cancelar</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <ion-button expand="block" (click)="!recognizing ? startListening() : stopListening()" color="secondary">
+              {{ recognizing ? 'Gravando...' : '🎙️ Gravar descrição por voz' }}
+            </ion-button>
+            <ion-textarea
+              placeholder="Digite o problema aqui..."
+              [(ngModel)]="modalProblema"
+              autoGrow="true"
+              fill="outline"
+              class="full-textarea"
+            ></ion-textarea>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+
+    </ion-content>
+
+  </ion-tab>
+
+  <ion-tab-bar slot="bottom" color="dark">
+    <ion-tab-button (click)="anterior()" [disabled]="currentStep === 0">
+      <ion-icon name="chevron-back"></ion-icon>
+      Anterior
+    </ion-tab-button>
+    <ion-tab-button (click)="proximo()" *ngIf="currentStep < steps.length - 1">
+      <ion-icon name="chevron-forward"></ion-icon>
+      Próximo
+    </ion-tab-button>
+    <ion-tab-button (click)="finalizar()" *ngIf="currentStep === steps.length - 1">
+      <ion-icon name="checkmark"></ion-icon>
+      Finalizar
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+
